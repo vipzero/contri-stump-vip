@@ -1,19 +1,27 @@
 use chrono::{DateTime, Duration, Local, TimeZone};
 
 fn main() {
+    //     let message = r"
+    // V V III PPP
+    // V V  I  P P
+    // V V  I  PPP
+    // V V  I  P
+    //  V  III P
+    // "
     let message = r" 
-V V III PPP
-V V  I  P P
-V V  I  PPP
-V V  I  P  
- V  III P  
+ X        X 
+X X      X X
+            
+    W   W   
+   W  W  W  
+    WW WW   
 "
     .trim();
 
     let git_format = "%c %z";
     let mut dayps: Vec<i64> = Vec::new();
     let start_day: DateTime<Local> = Local
-        .datetime_from_str("2020/04/12 12:00:00", "%Y/%m/%d %H:%M:%S")
+        .datetime_from_str("2021/01/31 12:00:00", "%Y/%m/%d %H:%M:%S")
         .unwrap();
 
     for (wi, line) in message.split("\n").enumerate() {
