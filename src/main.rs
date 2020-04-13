@@ -10,19 +10,26 @@ V V  I  P
 "
     .trim();
 
+    let git_format = "%c %z";
     let mut dayps: Vec<i64> = Vec::new();
-    let startDay: DateTime<Local> = Local
+    let start_day: DateTime<Local> = Local
         .datetime_from_str("2020/04/12 12:00:00", "%Y/%m/%d %H:%M:%S")
         .unwrap();
 
     for (wi, line) in message.split("\n").enumerate() {
-        for (di, c) in line.chars().enumerate().filter(|(_di, c)| *c != ' ') {
-            println!("{} {}", di, c);
+        for (di, _c) in line.chars().enumerate().filter(|(_di, c)| *c != ' ') {
+            // println!("{} {}", di, c);
             dayps.push((di * 7 + wi + 1) as i64)
         }
     }
     dayps.sort();
     for p in dayps {
-        println!("{}", startDay + Duration::days(p));
+        let d = start_day + Duration::days(p);
+        println!("touch {}", d.format("%F"));
+        println!("git add --all");
+        println!(
+            "git commit --date=\"{}\" -m \"yes\"",
+            (d).format(git_format)
+        );
     }
 }
