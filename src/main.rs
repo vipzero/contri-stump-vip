@@ -1,6 +1,7 @@
 use chrono::{DateTime, Duration, Local, TimeZone};
 
 fn main() {
+    let vertical_shift = 0;
     let year_dir = "2021";
     let start_date = "2021/01/31 12:00:00";
     //     let message = r"
@@ -10,7 +11,8 @@ fn main() {
     // V V  I  P
     //  V  III P
     // "
-    let message = r"X       X 
+    let message = r"
+ X       X 
 X X     X X
             
    W   W   
@@ -28,7 +30,7 @@ X X     X X
     for (wi, line) in message.split("\n").enumerate() {
         for (di, _c) in line.chars().enumerate().filter(|(_di, c)| *c != ' ') {
             // println!("{} {}", di, c);
-            dayps.push((di * 7 + wi + 1) as i64)
+            dayps.push((di * 7 + wi + vertical_shift) as i64)
         }
     }
     dayps.sort();
