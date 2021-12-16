@@ -33,7 +33,7 @@ X X      X X
     dayps.sort();
     for p in dayps {
         let d = start_day + Duration::days(p);
-        println!("touch {}", d.format("%F"));
+        println!("touch 2021/{}", d.format("%F"));
         println!("git add --all");
         println!(
             "git commit --date=\"{}\" -m \"yes\"",
