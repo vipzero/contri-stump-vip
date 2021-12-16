@@ -1,6 +1,8 @@
 use chrono::{DateTime, Duration, Local, TimeZone};
 
 fn main() {
+    let year_dir = "2021";
+    let start_date = "2021/01/31 12:00:00";
     //     let message = r"
     // V V III PPP
     // V V  I  P P
@@ -21,7 +23,7 @@ X X      X X
     let git_format = "%c %z";
     let mut dayps: Vec<i64> = Vec::new();
     let start_day: DateTime<Local> = Local
-        .datetime_from_str("2021/01/31 12:00:00", "%Y/%m/%d %H:%M:%S")
+        .datetime_from_str(start_date, "%Y/%m/%d %H:%M:%S")
         .unwrap();
 
     for (wi, line) in message.split("\n").enumerate() {
@@ -31,9 +33,10 @@ X X      X X
         }
     }
     dayps.sort();
+    println!("mkidr -p {}", year_dir);
     for p in dayps {
         let d = start_day + Duration::days(p);
-        println!("touch 2021/{}", d.format("%F"));
+        println!("touch {}/{}", year_dir, d.format("%F"));
         println!("git add --all");
         println!(
             "git commit --date=\"{}\" -m \"yes\"",
