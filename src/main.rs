@@ -32,7 +32,7 @@ X X     X X
         }
     }
     dayps.sort();
-    println!("mkidr -p {}", year_dir);
+    println!("mkdir -p {}", year_dir);
     for p in dayps {
         let d = start_day + Duration::days(p);
         println!("touch {}/{}", year_dir, d.format("%F"));
