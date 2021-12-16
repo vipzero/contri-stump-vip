@@ -10,13 +10,12 @@ fn main() {
     // V V  I  P
     //  V  III P
     // "
-    let message = r" 
- X        X 
-X X      X X
+    let message = r"X       X 
+X X     X X
             
-    W   W   
-   W  W  W  
-    WW WW   
+   W   W   
+  W  W  W  
+   WW WW   
 "
     .trim();
 
