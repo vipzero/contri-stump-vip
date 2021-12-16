@@ -12,7 +12,7 @@ fn main() {
     //  V  III P
     // "
     let message = r"
- X       X 
+_X       X 
 X X     X X
             
    W   W   
@@ -28,7 +28,11 @@ X X     X X
         .unwrap();
 
     for (wi, line) in message.split("\n").enumerate() {
-        for (di, _c) in line.chars().enumerate().filter(|(_di, c)| *c != ' ') {
+        for (di, _c) in line
+            .chars()
+            .enumerate()
+            .filter(|(_di, c)| *c != ' ' && *c != '_')
+        {
             // println!("{} {}", di, c);
             dayps.push((di * 7 + wi + vertical_shift) as i64)
         }
